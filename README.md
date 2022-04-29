@@ -1,6 +1,6 @@
-#Predicting the success of marketing campaign
+# Predicting the success of marketing campaign
 
-##Dataset
+## Dataset
 The dataset consists of direct marketing campaigns data of a banking 
 institution, and was picked from UCI Machine Learning Repository. 
 

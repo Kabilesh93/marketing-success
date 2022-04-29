@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, request
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import precision_score, recall_score, f1_score, accuracy_score
@@ -38,17 +38,38 @@ def train_model():
     return 'Train model: Completed'
 
 
-# @app.route('/marketing-success/predict')
-# def evaluate_model():
-#     with open('model/trained_model', 'rb') as f:
-#         model = pickle.load(f)
-#
-#     values = [46, 'unemployed', 'married', 'professional.course', 'unknown',
-#        'yes', 'no', 'telephone', 'may', 'wed', 219, 4, 999, 0,
-#        'nonexistent', 1.1, 93.994, -36.4, 4.859, 5191.0, 'no']
-#
-#     preprocessed_values =
-#     y_pred = model.predict(values)
+@app.route('/marketing-success/predict', methods=['GET', 'POST'])
+def evaluate_model():
+    with open('model/trained_model', 'rb') as f:
+        model = pickle.load(f)
+
+    content = request.json
+    input_data = {
+          'age': [41],
+          'job': ['blue-collar'],
+          'marital': ['married'],
+          'education': ['unknown'],
+          'default': ['unknown'],
+          'housing': ['no'],
+          'loan': ['no'],
+          'contact': ['telephone'],
+          'month': ['may'],
+          'day_of_week': ['mon'],
+          'duration': [55],
+          'campaign': [1],
+          'pdays': [999],
+          'previous': [0],
+          'poutcome': ['nonexistent'],
+          'emp.var.rate': [1.1],
+          'cons.price.idx': [93.994],
+          'cons.conf.idx': [-36.4],
+          'euribor3m': [4.857],
+          'nr.employed': [5191]
+    }
+
+    df = pd.DataFrame(input_data)
+
+    return "success"
 
 
 if __name__ == '__main__':

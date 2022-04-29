@@ -1,9 +1,9 @@
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.linear_model import LogisticRegression
-from sklearn.svm import SVC
-from sklearn.naive_bayes import GaussianNB
-# import xgboost as xgb
 from sklearn.feature_selection import RFE
+from sklearn.linear_model import LogisticRegression
+from sklearn.naive_bayes import GaussianNB
+from sklearn.svm import SVC
+# import xgboost as xgb
 
 
 def build_random_forest():
@@ -12,7 +12,7 @@ def build_random_forest():
     return rfe_selector
 
 
-def logistic_regresion():
+def build_logistic_regresion():
     logReg = LogisticRegression(random_state=42, max_iter=250)
     return logReg
 
